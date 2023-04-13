@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>TT Game</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="main__timer">
+        <div class="main__timer-count">
+          <h1>90</h1>
+        </div>
+        <div class="main__timer-black">
+          <h3>Night mode</h3>
+          <p>Off</p>
+        </div>
+        <div>
+          <h3 class="main__timer-sound">Sound</h3>
+          <p>Off</p>
+        </div>
+      </div>
+      <div class="main__start">
+        <div class="main__start-score">
+          <div></div>
+          <div></div>
+          <h2>0.00</h2>
+          <div class="main__start-scoreBest">
+            <span class="small__text">best</span>
+            <span>12.05</span>
+          </div>
+        </div>
+        <div id="main__start-game"></div>
+        <div class="main__start-button">
+          <button id="main__button" onclick="myClick(this)">START</button>
+        </div>
+      </div>
+      <div class="main__leaders">
+        <h2>LEADERS</h2>
+        <ul class="main__leaders-list">
+          <li>
+            <div>#1. Tim</div>
+            <div>12.05</div>
+          </li>
+          <li>
+            <div>#2. Braurs</div>
+            <div>14.45</div>
+          </li>
+          <li>
+            <div>#3. Alex</div>
+            <div>60.12</div>
+          </li>
+          <li>
+            <div>#4. Rovshan</div>
+            <div>73.67</div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
+  <script src="index.js"></script>
+</html>

@@ -1,0 +1,156 @@
+body {
+  background-color: #fbf8f1;
+  font-family: "Roboto Serif", serif;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard syntax */
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 900;
+}
+
+.main {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ############  main__timer  ################ */
+
+.main__timer {
+  width: 20%;
+  height: 90vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__timer h1,
+.main__timer h3 {
+  color: #706c63;
+}
+
+.main__timer p {
+  color: #d0c9bf;
+}
+
+.main__timer-count {
+  margin-bottom: 80px;
+}
+
+.main__timer-black {
+  margin-bottom: 30px;
+}
+
+.main__timer h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* ###############  main__start  ############# */
+
+.main__start {
+  width: 50%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__start h2 {
+  font-size: 3em;
+  font-weight: 700;
+  color: #706c63;
+}
+
+#main__start-game {
+  width: 80%;
+  height: 60vh;
+  background-color: #fff;
+  border: 20px solid #b8ab9e;
+  margin: 10px 0 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  overflow: auto;
+
+}
+
+.main__start-score {
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__start-scoreBest {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: #b8ab9e;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.small__text {
+  color: #e2dfd9;
+  font-size: 0.8em;
+}
+
+.main__start-button button {
+  padding: 16px 48px;
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #fff;
+  background-color: #b8ab9e;
+  border: none;
+  cursor: pointer;
+}
+
+.new-picture {
+  width: 30%;
+  height: 18vh;
+  border: 1px solid;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+/* ###############  main__leaders  ############# */
+
+.main__leaders {
+  width: 20%;
+  height: 90vh;
+}
+
+.main__leaders h2 {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #706c63;
+  text-align: center;
+}
+
+.main__leaders-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__leaders-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: #b8ab9e;
+  font-weight: 500;
+}
