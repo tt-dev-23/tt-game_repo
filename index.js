@@ -12,6 +12,7 @@ const myClick = (element) => {
 const createElements = () => {
   for (let i = 0; i < numbers.length; i++) {
     const newPicture = document.createElement("div");
+    newPicture.id = numbers[i];
     newPicture.classList.add("new-picture");
     newPicture.textContent = numbers[i];
     pictureField.appendChild(newPicture);
@@ -19,7 +20,10 @@ const createElements = () => {
       event.target.style.backgroundColor = "salmon";
       saveRes.clicked = numbers[i];
       console.log(numbers[i]);
-      console.log(saveRes)
+      console.log(saveRes);
+      console.log(event.target.id);
     });
   }
 };
+
+console.log(saveRes);
