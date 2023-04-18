@@ -1,11 +1,16 @@
 const button = document.getElementById("main__button");
 const pictureField = document.getElementById("main__start-game");
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let saveRes = {};
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// let shufle = [];
+let saveRes = {
+  userName: "User 1",
+  myRes: [],
+};
 
 const myClick = (element) => {
   element.innerText = "Game Started";
   button.disabled = true;
+  randomElements()
   createElements();
 };
 
@@ -18,12 +23,13 @@ const createElements = () => {
     pictureField.appendChild(newPicture);
     newPicture.addEventListener("click", (event) => {
       event.target.style.backgroundColor = "salmon";
-      saveRes.clicked = numbers[i];
-      console.log(numbers[i]);
-      console.log(saveRes);
-      console.log(event.target.id);
+      saveRes.myRes.push(event.target.id);
     });
   }
+};
+
+const randomElements = () => {
+   numbers.sort(() => Math.random()-0.5)
 };
 
 console.log(saveRes);
