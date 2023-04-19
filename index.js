@@ -59,11 +59,8 @@ const AlexFunction = () => {
   button.disabled = true;
 
   const answerCheck = (i) => {
-
     pictures.addEventListener("click", (event) => {
-     
       if (!myRes.length && shuffleNumbers[i] === numbers[0]) {
-       
         event.target.style.opacity = "0.33";
         myRes.push(shuffleNumbers[i])
       } else {
@@ -73,8 +70,9 @@ const AlexFunction = () => {
           if (myRes.length === shuffleNumbers.length) {
             alert('Stop!')
           }
-        } else { alert('Wrong') }}        
-      });
+        } else { alert('Wrong') }
+      }
+    });
   };
 
 
@@ -90,7 +88,7 @@ const AlexFunction = () => {
     }
   };
   createElements();
-  
+
 }
 const myClick = (element) => {
   element.innerText = "Game Started";
