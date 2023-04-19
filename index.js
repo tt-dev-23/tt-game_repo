@@ -1,35 +1,48 @@
 const button = document.getElementById("main__button");
 const pictureField = document.getElementById("main__start-game");
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// let shufle = [];
-let saveRes = {
-  userName: "User 1",
-  myRes: [],
-};
+let pictures;
+const shufle = [];
+const myRes = [];
+
 
 const myClick = (element) => {
   element.innerText = "Game Started";
   button.disabled = true;
-  randomElements()
+  randomElements();
   createElements();
+};
+
+const randomElements = () => {
+  shufle.push(numbers.sort(() => Math.random() - 0.5));
+  console.log(shufle);
 };
 
 const createElements = () => {
   for (let i = 0; i < numbers.length; i++) {
-    const newPicture = document.createElement("div");
-    newPicture.id = numbers[i];
-    newPicture.classList.add("new-picture");
-    newPicture.textContent = numbers[i];
-    pictureField.appendChild(newPicture);
-    newPicture.addEventListener("click", (event) => {
-      event.target.style.backgroundColor = "salmon";
-      saveRes.myRes.push(event.target.id);
-    });
+    pictures = document.createElement("div");
+    pictures.id = numbers[i];
+    pictures.classList.add("new-picture");
+    pictures.textContent = numbers[i];
+    pictureField.appendChild(pictures);
+    answerCheck();
   }
 };
 
-const randomElements = () => {
-   numbers.sort(() => Math.random()-0.5)
+const answerCheck = () => {
+  pictures.addEventListener("click", (event) => {
+    let targetId = event.target.id;
+    if (targetId == pictures.id) {
+      event.target.style.backgroundColor = "salmon";
+      myRes.push(targetId);
+    } else {
+      event.target.style.backgroundColor = "silver";
+    }
+
+    console.log(targetId);
+    console.log(pictures.id);
+  });
 };
 
-console.log(saveRes);
+console.log(myRes);
+console.log(shufle);

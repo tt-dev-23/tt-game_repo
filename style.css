@@ -159,3 +159,10 @@ h1 {
   color: #b8ab9e;
   font-weight: 500;
 }
+
+.main__liders-question{
+  margin-top: 100px;
+  color: #706c63;
+  font-size: 0.8em;
+  font-weight: 600;
+}
