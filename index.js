@@ -61,7 +61,7 @@ const AlexFunction = () => {
   const answerCheck = (i) => {
 
     pictures.addEventListener("click", (event) => {
-     console.log(i)
+     
       if (!myRes.length && shuffleNumbers[i] === numbers[0]) {
        
         event.target.style.opacity = "0.33";
