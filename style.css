@@ -54,6 +54,10 @@ h1 {
   margin-bottom: 6px;
 }
 
+.main__timer-mix{
+  display: none;
+}
+
 /* ###############  main__start  ############# */
 
 .main__start {
