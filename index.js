@@ -8,6 +8,8 @@ const MainFunction = () => {
   const button = document.getElementById("main__button");
   const timeCounter = document.getElementById("main__time-counter");
   const pictureField = document.getElementById("main__start-game");
+  const modalPage = document.getElementById("modalId");
+  const closeModal = document.getElementsByClassName("modal__class-close")[0];
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const shuffleNumbers = randomElements(numbers);
   const myRes = [];
@@ -39,15 +41,26 @@ const MainFunction = () => {
     clearInterval(timerId);
   };
 
-  const congratulation = () => {
-    pictureField.innerHTML = `You WIN and Your result is ${2}`;
+  const openModal = () => {
+    modalPage.style.display = "block";
+  };
+
+  closeModal.onclick = () => {
+    modalPage.style.display = "none";
+    location.reload();
+  };
+
+  window.onclick = (event) => {
+    if (event.target == modalPage) {
+      modalPage.style.display = "none";
+      location.reload();
+    }
   };
 
   const buttoEnable = () => {
     button.disabled = false;
     console.log(button.innerText);
     button.innerText = "START";
-    congratulation();
   };
 
   const answerCheck = (index) => {
@@ -59,6 +72,7 @@ const MainFunction = () => {
         // console.log(shuffleNumbers[index]);
         if (myRes.length === shuffleNumbers.length) {
           stopTimer();
+          openModal();
           buttoEnable();
         }
       } else {
