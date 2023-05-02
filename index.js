@@ -9,7 +9,6 @@ const myClick = (element) => {
 };
 
 const createElements = () => {
-  // numbers.forEach((item) => {
   for (let i = 0; i < numbers.length; i++) {
     const newPicture = document.createElement("div");
     newPicture.classList.add("new-picture");
@@ -19,12 +18,6 @@ const createElements = () => {
       window.alert(`Clicked blok #${numbers[i]}`);
     });
   }
-  //   const newPicture = document.createElement("div");
-  // newPicture.classList.add("new-picture");
-  // newPicture.textContent = item;
-  // newPicture.textContent = numbers[i];
-  // pictureField.appendChild(newPicture);
-  // });
 
   console.log(pictureField);
 };
