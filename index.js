@@ -69,7 +69,6 @@ const MainFunction = () => {
         event.target.style.opacity = "0.33";
         myRes.push(shuffleNumbers[index]);
         // console.log(myRes.length);
-        // console.log(myRes.length);
         // console.log(shuffleNumbers[index]);
         if (myRes.length === shuffleNumbers.length) {
           stopTimer();
