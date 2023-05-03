@@ -1,5 +1,5 @@
 # tt-game
-https://github.com/V0l9emar/tt-game_repo
+https://tt-dev-23.github.io/tt-game_repo/
 
 ## Игра с картинками, которые надо кликать в хронологическом порядке на время.
 
