@@ -64,13 +64,11 @@ const main = () => {
 
   closeModal.onclick = () => {
     modalPage.style.display = "none";
-    // location.reload();
   };
 
   modalPage.onclick = (event) => {
     if (event.target == modalPage) {
       modalPage.style.display = "none";
-      // location.reload();
     }
   };
 
