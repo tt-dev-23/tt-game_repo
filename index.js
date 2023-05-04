@@ -64,15 +64,22 @@ const main = () => {
 
   closeModal.onclick = () => {
     modalPage.style.display = "none";
+    // location.reload();
   };
 
+  modalPage.onclick = (event) => {
+    if (event.target == modalPage) {
+      modalPage.style.display = "none";
+      // location.reload();
+    }
+  };
 
   const buttonEnable = () => {
     button.disabled = false;
     button.innerText = "START";
-    button.style.backgroundColor = "#fff";
-    button.style.border = "1px solid #b8ab9e";
-    button.style.color = "#b8ab9e";
+  button.style.backgroundColor = "#fff";
+  button.style.border = "1px solid #b8ab9e"
+  button.style.color = "#b8ab9e";
   };
 
   const answerCheck = (index) => {
