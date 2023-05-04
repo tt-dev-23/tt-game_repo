@@ -2,7 +2,9 @@ const button = document.getElementById("main__button");
 const timeCounter = document.getElementById("main__time-counter");
 const picturesField = document.getElementById("main__start-game");
 const modalPage = document.getElementById("modalId");
+const modalBlock = document.getElementById("modalBlock");
 const closeModal = document.getElementsByClassName("modal__class-close")[0];
+const modalText = document.createElement("h2");
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const myRes = [];
 let picture;
@@ -18,12 +20,12 @@ const randomElements = (array) => {
 };
 
 const formatTime = (ms) => {
+  const min = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
   const sec = Math.floor((ms % 60000) / 1000);
-  const msec = ms % 1000;
-  return `${sec.toString().padStart(1, "0")}:${msec
+  const msec = Math.floor((ms % 1000) / 10);
+  return `${min ? min.toString().padStart(1, "0") + ":" : ""}${sec
     .toString()
-    .padStart(3, "0")
-    .slice(0, 2)}`;
+    .padStart(1, "0")}:${msec.toString().padStart(2, "0")}`;
 };
 
 const main = () => {
@@ -43,25 +45,34 @@ const main = () => {
     clearInterval(timerId);
   };
 
-  const openModal = () => {
+  const createModalText = () => {
+    modalText.textContent = "";
+    modalBlock.appendChild(modalText);
+  };
+
+  const rightAnswers = () => {
     modalPage.style.display = "block";
+    createModalText();
+    modalText.textContent = "Congratulation, You WIN ...";
+  };
+
+  const wrongAnswer = () => {
+    modalPage.style.display = "block";
+    createModalText();
+    modalText.textContent = "Your answer is wrong ...";
   };
 
   closeModal.onclick = () => {
     modalPage.style.display = "none";
-    location.reload();
   };
 
-  modalPage.onclick = (event) => {
-    if (event.target == modalPage) {
-      modalPage.style.display = "none";
-      location.reload();
-    }
-  };
 
   const buttonEnable = () => {
     button.disabled = false;
     button.innerText = "START";
+    button.style.backgroundColor = "#fff";
+    button.style.border = "1px solid #b8ab9e";
+    button.style.color = "#b8ab9e";
   };
 
   const answerCheck = (index) => {
@@ -71,11 +82,11 @@ const main = () => {
         myRes.push(shuffleNumbers[index]);
         if (myRes.length === shuffleNumbers.length) {
           stopTimer();
-          openModal();
+          rightAnswers();
           buttonEnable();
         }
       } else {
-        alert("Wrong");
+        wrongAnswer();
       }
     });
   };
@@ -93,7 +104,9 @@ const main = () => {
   startTimer();
 };
 
-button.onclick = (element) => {
-  element.innerText = "Game Started";
+button.onclick = () => {
+  button.innerText = "Game Started";
+  button.style.backgroundColor = "#b8ab9e";
+  button.style.color = "#fff";
   main();
 };
