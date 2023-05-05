@@ -116,8 +116,8 @@ h1 {
   padding: 16px 48px;
   font-size: 1.6em;
   font-weight: 700;
-  color: #b8ab9e;
-  background-color: #fff;
+  color: #fff;
+  background-color: #b8ab9e;
   border: 1px solid #b8ab9e;
   cursor: pointer;
 }

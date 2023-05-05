@@ -6,7 +6,7 @@ const modalBlock = document.getElementById("modalBlock");
 const closeModal = document.getElementsByClassName("modal__class-close")[0];
 const modalText = document.createElement("h2");
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const myRes = [];
+let myRes = [];
 let picture;
 let timerId;
 let startTime;
@@ -26,6 +26,12 @@ const formatTime = (ms) => {
   return `${min ? min.toString().padStart(1, "0") + ":" : ""}${sec
     .toString()
     .padStart(1, "0")}:${msec.toString().padStart(2, "0")}`;
+};
+
+const resetGame = () => {
+  picturesField.innerHTML = "";
+  myRes = [];
+  elTime = 0;
 };
 
 const main = () => {
@@ -54,6 +60,7 @@ const main = () => {
     modalPage.style.display = "block";
     createModalText();
     modalText.textContent = "Congratulation, You WIN ...";
+
   };
 
   const wrongAnswer = () => {
@@ -75,9 +82,11 @@ const main = () => {
   const buttonEnable = () => {
     button.disabled = false;
     button.innerText = "START";
-  button.style.backgroundColor = "#fff";
-  button.style.border = "1px solid #b8ab9e"
-  button.style.color = "#b8ab9e";
+    button.style.backgroundColor = "#b8ab9e";
+    button.style.border = "1px solid #b8ab9e";
+    button.style.color = "#fff";
+    button.style.opacity = "1";
+    button.style.cursor = "pointer";
   };
 
   const answerCheck = (index) => {
@@ -89,6 +98,7 @@ const main = () => {
           stopTimer();
           rightAnswers();
           buttonEnable();
+          resetGame();
         }
       } else {
         wrongAnswer();
@@ -111,7 +121,9 @@ const main = () => {
 
 button.onclick = () => {
   button.innerText = "Game Started";
-  button.style.backgroundColor = "#b8ab9e";
-  button.style.color = "#fff";
+  button.style.backgroundColor = "#fff";
+  button.style.color = "#b8ab9e";
+  button.style.opacity = "0.4";
+  button.style.cursor = "default";
   main();
 };
