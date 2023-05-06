@@ -25,7 +25,7 @@ const formatTime = (ms) => {
   const msec = Math.floor((ms % 1000) / 10);
   return `${min ? min.toString().padStart(1, "0") + ":" : ""}${sec
     .toString()
-    .padStart(1, "0")}:${msec.toString().padStart(2, "0")}`;
+    .padStart(2, "0")}:${msec.toString().padStart(2, "0")}`;
 };
 
 const resetGame = () => {
@@ -60,7 +60,6 @@ const main = () => {
     modalPage.style.display = "block";
     createModalText();
     modalText.textContent = "Congratulation, You WIN ...";
-
   };
 
   const wrongAnswer = () => {
@@ -93,6 +92,7 @@ const main = () => {
     picture.addEventListener("click", (event) => {
       if (numbers[myRes.length] === shuffleNumbers[index]) {
         event.target.style.opacity = "0.33";
+        event.target.style.pointerEvents = "none";
         myRes.push(shuffleNumbers[index]);
         if (myRes.length === shuffleNumbers.length) {
           stopTimer();
