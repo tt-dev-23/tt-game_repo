@@ -5,7 +5,8 @@ const modalPage = document.getElementById("modalId");
 const modalBlock = document.getElementById("modalBlock");
 const closeModal = document.getElementsByClassName("modal__class-close")[0];
 const modalText = document.createElement("h2");
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const links = [];
+let photoWidth;
 let myRes = [];
 let picture;
 let timerId;
@@ -34,8 +35,33 @@ const resetGame = () => {
   elTime = 0;
 };
 
+
+fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
+  .then((response) => response.text())
+  .then((text) => {
+    const lines = text.split("\n");
+    const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
+    for (let i = 0; i < lines.length; i++) {
+      const parts = lines[i].split("\t");
+      parts.forEach((item) => {
+        const matches = item.match(regex);
+        if (matches) {
+          links.push(...matches);
+        }
+      });
+
+    }
+    const roundRegex = /\(|\)/g;
+    for(let i=0; i<links.length; i++){
+      links[i] = links[i].replace(roundRegex, '')
+    }
+
+    console.log(links);
+  })
+  .catch((error) => console.error(error));
+
 const main = () => {
-  const shuffleNumbers = randomElements(numbers);
+  const shuffleNumbers = randomElements(links);
 
   button.disabled = true;
 
@@ -80,7 +106,7 @@ const main = () => {
 
   const buttonEnable = () => {
     button.disabled = false;
-    button.innerText = "START";
+    button.innerText = "START NEW GAME";
     button.style.backgroundColor = "#b8ab9e";
     button.style.border = "1px solid #b8ab9e";
     button.style.color = "#fff";
@@ -90,7 +116,7 @@ const main = () => {
 
   const answerCheck = (index) => {
     picture.addEventListener("click", (event) => {
-      if (numbers[myRes.length] === shuffleNumbers[index]) {
+      if (links[myRes.length] === shuffleNumbers[index]) {
         event.target.style.opacity = "0.33";
         event.target.style.pointerEvents = "none";
         myRes.push(shuffleNumbers[index]);
@@ -98,7 +124,7 @@ const main = () => {
           stopTimer();
           rightAnswers();
           buttonEnable();
-          resetGame();
+
         }
       } else {
         wrongAnswer();
@@ -108,13 +134,15 @@ const main = () => {
 
   const createElements = () => {
     for (let i = 0; i < shuffleNumbers.length; i++) {
-      picture = document.createElement("div");
+      picture = document.createElement("img");
       picture.classList.add("new-picture");
-      picture.textContent = shuffleNumbers[i];
+      picture.src = shuffleNumbers[i];
       picturesField.appendChild(picture);
       answerCheck(i);
     }
   };
+
+  resetGame();
   createElements();
   startTimer();
 };

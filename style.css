@@ -124,7 +124,7 @@ h1 {
 
 .new-picture {
   width: 30%;
-  height: 18vh;
+  /* height: 18vh; */
   border: 1px solid;
   margin: 5px 0;
   cursor: pointer;
