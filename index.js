@@ -49,14 +49,11 @@ fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
           links.push(...matches);
         }
       });
-
     }
     const roundRegex = /\(|\)/g;
     for(let i=0; i<links.length; i++){
       links[i] = links[i].replace(roundRegex, '')
     }
-
-    console.log(links);
   })
   .catch((error) => console.error(error));
 
