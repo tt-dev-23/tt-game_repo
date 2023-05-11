@@ -1,17 +1,21 @@
 const button = document.getElementById("main__button");
 const timeCounter = document.getElementById("main__time-counter");
+const storyName = document.getElementById("main__story-name");
 const picturesField = document.getElementById("main__start-game");
 const modalPage = document.getElementById("modalId");
 const modalBlock = document.getElementById("modalBlock");
 const closeModal = document.getElementsByClassName("modal__class-close")[0];
 const modalText = document.createElement("h2");
 const links = [];
+let currentStory = [];
 let photoWidth;
 let myRes = [];
 let picture;
 let timerId;
 let startTime;
 let elTime = 0;
+
+
 
 const randomElements = (array) => {
   if (!array) {
@@ -39,6 +43,10 @@ const resetGame = () => {
 fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
   .then((response) => response.text())
   .then((text) => {
+    let currentText = text.match(/^(.*)$/m)[0];
+    storyName.textContent = currentText;
+    currentStory.push(currentText)
+    console.log(currentText)
     const lines = text.split("\n");
     const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
     for (let i = 0; i < lines.length; i++) {
@@ -56,6 +64,8 @@ fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
     }
   })
   .catch((error) => console.error(error));
+console.log(currentStory)
+
 
 const main = () => {
   const shuffleNumbers = randomElements(links);
@@ -143,6 +153,7 @@ const main = () => {
   createElements();
   startTimer();
 };
+
 
 button.onclick = () => {
   button.innerText = "Game Started";
