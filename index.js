@@ -52,7 +52,7 @@ fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
     let currentText = text.match(/^(.*)$/m)[0];
     storyName.textContent = currentText;
     const lines = text.split("\n");
-    const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
+    const regex = /https:\/\/[a-zA-Z0-9\/\-._]+\.jpg/g;
     for (let i = 0; i < lines.length; i++) {
       const parts = lines[i].split("\t");
       parts.forEach((item) => {
@@ -61,10 +61,6 @@ fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
           links.push(...matches);
         }
       });
-    }
-    const roundRegex = /\(|\)/g;
-    for (let i = 0; i < links.length; i++) {
-      links[i] = links[i].replace(roundRegex, "");
     }
   })
   .catch((error) => console.error(error));
