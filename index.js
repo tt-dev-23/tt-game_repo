@@ -3,9 +3,9 @@ const timeCounter = document.getElementById("main__time-counter");
 const storyName = document.getElementById("main__story-name");
 const picturesField = document.getElementById("main__start-game");
 const modalPage = document.getElementById("modalId");
-const modalBlock = document.getElementById("modalBlock");
-const closeModal = document.getElementsByClassName("modal__class-close")[0];
+const modalBlock = document.createElement("div")
 const modalText = document.createElement("h2");
+const modalTime = document.createElement("h3");
 const links = [];
 let currentStory = [];
 let photoWidth;
@@ -14,8 +14,6 @@ let picture;
 let timerId;
 let startTime;
 let elTime = 0;
-
-
 
 const randomElements = (array) => {
   if (!array) {
@@ -33,20 +31,26 @@ const formatTime = (ms) => {
     .padStart(2, "0")}:${msec.toString().padStart(2, "0")}`;
 };
 
+const getPlayerTime = () => {
+  let playerTime = new Date(elTime)
+  let min = playerTime.getMinutes();
+  let sec = playerTime.getSeconds();
+  let msec = playerTime.getMilliseconds() / 10;
+  let formatedPlayerTime = `${min ? min + ":" : ""}${sec}:${msec}`
+  modalTime.textContent = `Your time is: ${formatedPlayerTime}`;
+}
+
 const resetGame = () => {
   picturesField.innerHTML = "";
   myRes = [];
   elTime = 0;
 };
 
-
 fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
   .then((response) => response.text())
   .then((text) => {
     let currentText = text.match(/^(.*)$/m)[0];
     storyName.textContent = currentText;
-    currentStory.push(currentText)
-    console.log(currentText)
     const lines = text.split("\n");
     const regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
     for (let i = 0; i < lines.length; i++) {
@@ -59,13 +63,11 @@ fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
       });
     }
     const roundRegex = /\(|\)/g;
-    for(let i=0; i<links.length; i++){
-      links[i] = links[i].replace(roundRegex, '')
+    for (let i = 0; i < links.length; i++) {
+      links[i] = links[i].replace(roundRegex, "");
     }
   })
   .catch((error) => console.error(error));
-console.log(currentStory)
-
 
 const main = () => {
   const shuffleNumbers = randomElements(links);
@@ -84,25 +86,27 @@ const main = () => {
     clearInterval(timerId);
   };
 
-  const createModalText = () => {
-    modalText.textContent = "";
+  const createModalBlock = () => {
+    modalBlock.classList.add("modal__class-content")
+    modalText.textContent = "Congratulation, You WIN ...";
+    modalTime.textContent = ""
+    modalPage.appendChild(modalBlock)
     modalBlock.appendChild(modalText);
+    modalBlock.appendChild(modalTime);
+    getPlayerTime()
   };
 
   const rightAnswers = () => {
+    modalPage.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
     modalPage.style.display = "block";
-    createModalText();
-    modalText.textContent = "Congratulation, You WIN ...";
+    createModalBlock();
   };
 
   const wrongAnswer = () => {
     modalPage.style.display = "block";
-    createModalText();
-    modalText.textContent = "Your answer is wrong ...";
-  };
-
-  closeModal.onclick = () => {
-    modalPage.style.display = "none";
+    setTimeout(() => {
+      modalPage.style.display = "none";
+    }, 1000);
   };
 
   modalPage.onclick = (event) => {
@@ -131,7 +135,6 @@ const main = () => {
           stopTimer();
           rightAnswers();
           buttonEnable();
-
         }
       } else {
         wrongAnswer();
@@ -153,7 +156,6 @@ const main = () => {
   createElements();
   startTimer();
 };
-
 
 button.onclick = () => {
   button.innerText = "Game Started";
