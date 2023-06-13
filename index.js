@@ -3,7 +3,7 @@ const timeCounter = document.getElementById("main__time-counter");
 const storyName = document.getElementById("main__story-name");
 const picturesField = document.getElementById("main__start-game");
 const modalPage = document.getElementById("modalId");
-const modalBlock = document.createElement("div")
+const modalBlock = document.createElement("div");
 const modalText = document.createElement("h2");
 const modalTime = document.createElement("h3");
 const links = [];
@@ -32,18 +32,21 @@ const formatTime = (ms) => {
 };
 
 const getPlayerTime = () => {
-  let playerTime = new Date(elTime)
+  let playerTime = new Date(elTime);
   let min = playerTime.getMinutes();
   let sec = playerTime.getSeconds();
-  let msec = playerTime.getMilliseconds() / 10;
-  let formatedPlayerTime = `${min ? min + ":" : ""}${sec}:${msec}`
+  let msec = Math.round(playerTime.getMilliseconds() / 10);
+  let formatedPlayerTime = `${min ? min + ":" : ""}${sec}:${msec}`;
   modalTime.textContent = `Your time is: ${formatedPlayerTime}`;
-}
+};
 
 const resetGame = () => {
   picturesField.innerHTML = "";
+  modalPage.innerHTML = "";
+  modalPage.style.backgroundColor = "";
   myRes = [];
   elTime = 0;
+
 };
 
 fetch("https://git.door43.org/ru_gl/rsl_obs/raw/branch/master/10.md")
@@ -83,17 +86,17 @@ const main = () => {
   };
 
   const createModalBlock = () => {
-    modalBlock.classList.add("modal__class-content")
+    modalBlock.classList.add("modal__class-content");
     modalText.textContent = "Congratulation, You WIN ...";
-    modalTime.textContent = ""
-    modalPage.appendChild(modalBlock)
+    modalTime.textContent = "";
+    modalPage.appendChild(modalBlock);
     modalBlock.appendChild(modalText);
     modalBlock.appendChild(modalTime);
-    getPlayerTime()
+    getPlayerTime();
   };
 
   const rightAnswers = () => {
-    modalPage.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
+    modalPage.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
     modalPage.style.display = "block";
     createModalBlock();
   };
@@ -151,6 +154,7 @@ const main = () => {
   resetGame();
   createElements();
   startTimer();
+  // document.getElementById("modalId").innerHTML = "";
 };
 
 button.onclick = () => {

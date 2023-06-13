@@ -8,8 +8,9 @@ body {
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 2em;
   font-weight: 900;
+  margin-bottom: 30px;
 }
 
 .main {
@@ -21,41 +22,40 @@ h1 {
   align-items: center;
 }
 
-/* ############  main__timer  ################ */
+/* ############  main__left  ################ */
 
-.main__timer {
+.main__left {
   width: 15%;
   height: 90vh;
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
 }
 
-.main__timer h1,
-.main__timer h3 {
+.main__left h1,
+.main__left h3 {
   color: #706c63;
 }
 
-.main__timer p {
+.main__left p {
   color: #d0c9bf;
 }
 
-.main__timer-count {
+.main__left-count {
   margin-bottom: 80px;
 }
 
-.main__timer-black {
+.main__left-black {
   margin-bottom: 30px;
 }
 
-.main__timer h3 {
-  font-size: 1.4em;
+.main__left h3 {
+  font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 6px;
 }
 
-.main__timer-mix{
+.main__left-mix{
   display: none;
 }
 
