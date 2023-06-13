@@ -17,24 +17,27 @@
   </head>
   <body>
     <main class="main">
-      <div class="main__timer">
+      <div class="main__left">
         <div class="main__timer-count">
-          <h1>90</h1>
+          <h1>Memory Game</h1>
         </div>
         <div class="main__timer-black">
           <h3>Night mode</h3>
           <p>Off</p>
         </div>
-        <div>
-          <h3 class="main__timer-sound">Sound</h3>
+        <div class="main__timer-mix">
+          <h3>Mix mode</h3>
+          <p>Off</p>
+        </div>
+        <div class="main__timer-sound">
+          <h3>Sound</h3>
           <p>Off</p>
         </div>
       </div>
       <div class="main__start">
         <div class="main__start-score">
-          <div></div>
-          <div></div>
-          <h2>0.00</h2>
+          <div class="main__story"><h3 id="main__story-name"></h3></div>
+          <div class="main__time"><h2 id="main__time-counter">0.00</h2></div>
           <div class="main__start-scoreBest">
             <span class="small__text">best</span>
             <span>12.05</span>
@@ -42,7 +45,7 @@
         </div>
         <div id="main__start-game"></div>
         <div class="main__start-button">
-          <button id="main__button" onclick="myClick(this)">START</button>
+          <button id="main__button">START</button>
         </div>
       </div>
       <div class="main__leaders">
@@ -65,7 +68,13 @@
             <div>73.67</div>
           </li>
         </ul>
+        <div class="main__liders-question">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+          ducimus earum est amet provident facere blanditiis molestias adipisci
+          suscipit nulla.
+        </div>
       </div>
+      <div id="modalId" class="modal__class"></div>
     </main>
   </body>
   <script src="index.js"></script>

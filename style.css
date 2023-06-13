@@ -8,12 +8,13 @@ body {
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 2em;
   font-weight: 900;
+  margin-bottom: 30px;
 }
 
 .main {
-  width: 80%;
+  width: 90%;
   height: 100vh;
   margin: auto;
   display: flex;
@@ -21,47 +22,52 @@ h1 {
   align-items: center;
 }
 
-/* ############  main__timer  ################ */
+/* ############  main__left  ################ */
 
-.main__timer {
-  width: 20%;
+.main__left {
+  width: 15%;
   height: 90vh;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
-.main__timer h1,
-.main__timer h3 {
+.main__left h1,
+.main__left h3 {
   color: #706c63;
 }
 
-.main__timer p {
+.main__left p {
   color: #d0c9bf;
 }
 
-.main__timer-count {
+.main__left-count {
   margin-bottom: 80px;
 }
 
-.main__timer-black {
+.main__left-black {
   margin-bottom: 30px;
 }
 
-.main__timer h3 {
-  font-size: 1.4em;
+.main__left h3 {
+  font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 6px;
+}
+
+.main__left-mix{
+  display: none;
 }
 
 /* ###############  main__start  ############# */
 
 .main__start {
-  width: 50%;
+  width: 90%;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 1px solid black; */
 }
 
 .main__start h2 {
@@ -71,8 +77,8 @@ h1 {
 }
 
 #main__start-game {
-  width: 80%;
-  height: 60vh;
+  width: 90%;
+  height: 100vh;
   background-color: #fff;
   border: 20px solid #b8ab9e;
   margin: 10px 0 20px;
@@ -83,13 +89,25 @@ h1 {
   justify-content: space-around;
   align-items: center;
   overflow: auto;
-
 }
 
 .main__start-score {
-  width: 86%;
+  width: 94%;
   display: flex;
   justify-content: space-between;
+}
+
+.main__story{
+  width: 33%;
+  font-weight: 800;
+  font-size: 1.4em;
+  color: #706c63;
+  display: flex;
+  align-items: end;
+}
+
+.main__time{
+  width: 33%;
 }
 
 .main__start-scoreBest {
@@ -115,22 +133,25 @@ h1 {
   font-weight: 700;
   color: #fff;
   background-color: #b8ab9e;
-  border: none;
+  border: 1px solid #b8ab9e;
   cursor: pointer;
 }
 
 .new-picture {
-  width: 30%;
-  height: 18vh;
-  border: 1px solid;
+  width: 24%;
   margin: 5px 0;
   cursor: pointer;
+  background-color: #f8f5ed;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ###############  main__leaders  ############# */
 
 .main__leaders {
-  width: 20%;
+  width: 15%;
   height: 90vh;
 }
 
@@ -153,4 +174,69 @@ h1 {
   margin-bottom: 6px;
   color: #b8ab9e;
   font-weight: 500;
+}
+
+.main__liders-question {
+  margin-top: 100px;
+  color: #706c63;
+  font-size: 0.8em;
+  font-weight: 600;
+  display: none;
+}
+
+/*####################### Modal Page ######################*/
+
+.modal__class {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(204, 0, 0, 0.1);
+}
+
+.modal__class-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal__class-content h2{
+  font-weight: 700;
+  color: #706c63;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.modal__class-content h3{
+  font-weight: 600;
+  color: #888;
+  font-size: 1.4em;
+}
+
+.modal__class-close {
+  color: #fbf8f1;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius:50%;
+  background-color:lightgray;
+}
+
+.modal__class-close:hover,
+.modal__class-close:focus {
+  color: #706c63;
+  text-decoration: none;
+  cursor: pointer;
 }
